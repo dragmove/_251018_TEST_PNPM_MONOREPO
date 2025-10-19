@@ -1,0 +1,21 @@
+{
+  "name": "pnpm-monorepo",
+  "version": "0.0.1",
+  "description": "simple pnpm monorepo example with next.js and vite",
+  "main": "index.js",
+  "scripts": {
+    "dev:next": "pnpm --filter next-app dev",
+    "dev:vite": "pnpm --filter vite-app dev",
+    "dev": "pnpm run dev:vite & pnpm run dev:next",
+    "build:next": "pnpm --filter next-app build",
+    "build:vite": "pnpm --filter vite-app build",
+    "build": "pnpm recursive run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.5.2",
+  "dependencies": {
+    "@pnpmworkspace/logger": "link:packages/logger"
+  }
+}

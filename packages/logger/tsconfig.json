@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    /* === 기본 설정 === */
+    "target": "ES2020",                // 최신 JS 문법 유지
+    "module": "ESNext",                // ES Module 방식으로 출력
+    "moduleResolution": "Bundler",     // Vite 및 modern bundler에 맞춤
+    "lib": ["ES2020", "DOM"],
+
+    /* === 출력 관련 === */
+    "outDir": "dist",                  // 빌드 출력 경로
+    "rootDir": "src",                  // 소스 경로
+    "declaration": true,               // .d.ts 생성
+    "declarationMap": true,            // .d.ts.map 생성
+    "sourceMap": true,                 // 소스맵 생성
+
+    /* === ESM 호환 === */
+    "isolatedModules": true,           // 모듈 단위 컴파일 보장
+    "esModuleInterop": true,           // CJS import 호환
+    "allowSyntheticDefaultImports": true, // default import 호환
+    "forceConsistentCasingInFileNames": true,
+
+    /* === 품질 관련 === */
+    "strict": true,                    // 타입 엄격 모드
+    "skipLibCheck": true               // 외부 라이브러리 검사 생략
+  },
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"]
+}
