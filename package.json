@@ -1,7 +1,7 @@
 {
   "name": "pnpm-monorepo",
   "version": "0.0.1",
-  "description": "",
+  "description": "simple pnpm monorepo example with next.js and vite",
   "main": "index.js",
   "scripts": {
     "dev:next": "pnpm --filter next-app dev",
