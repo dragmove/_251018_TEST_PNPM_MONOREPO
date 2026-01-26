@@ -6,9 +6,11 @@
   "scripts": {
     "dev:next": "pnpm --filter next-app dev",
     "dev:vite": "pnpm --filter vite-app dev",
-    "dev": "pnpm run dev:vite & pnpm run dev:next",
+    "dev:next16": "pnpm --filter next16-app dev",
+    "dev": "pnpm run dev:vite & pnpm run dev:next & pnpm run dev:next16",
     "build:next": "pnpm --filter next-app build",
     "build:vite": "pnpm --filter vite-app build",
+    "build:next16": "pnpm --filter next16-app build",
     "build": "pnpm recursive run build"
   },
   "keywords": [],
@@ -16,6 +18,17 @@
   "license": "MIT",
   "packageManager": "pnpm@10.5.2",
   "dependencies": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "@pnpmworkspace/logger": "link:packages/logger"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
+      <p>Env: {process.env.NEXT_PUBLIC_ENV}</p>
       <Content />
 
       <main className={styles.main}>
