@@ -1,0 +1,42 @@
+# --------------------
+# Build stage
+# --------------------
+FROM node:24-alpine AS builder
+
+WORKDIR /usr/src/app
+
+RUN corepack enable
+
+# copy workspace manifest
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
+COPY packages ./packages
+COPY apps/next16-app ./apps/next16-app
+
+# install workspace dependencies
+RUN pnpm install --frozen-lockfile
+
+# build Next.js app
+WORKDIR /usr/src/app/apps/next16-app
+RUN pnpm build
+
+# --------------------
+# Runner stage
+# --------------------
+FROM node:24-alpine AS runner
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+WORKDIR /usr/src/app
+
+# copy standalone build output
+COPY --from=builder /usr/src/app/apps/next16-app/.next/standalone ./
+
+# copy static assets
+COPY --from=builder /usr/src/app/apps/next16-app/.next/static ./apps/next16-app/.next/static
+COPY --from=builder /usr/src/app/apps/next16-app/public ./apps/next16-app/public
+
+EXPOSE 3000
+
+CMD ["node", "apps/next16-app/server.js"]
+    
